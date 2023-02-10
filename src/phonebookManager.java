@@ -1,21 +1,26 @@
 import java.util.*;
 public class phonebookManager {
-    public void LinkedListArray(LinkedList<String> entries, LinkedList<String> AllEntries) {
-        AllEntries.add(String.valueOf(entries));
-        LinkedList<String> IndexTest = new LinkedList<String>();
-        IndexTest.add(AllEntries.get(0));
-
+    public void LinkedListArray(LinkedList<String> AllEntries) {
         Scanner AskingUser = new Scanner(System.in);
-        System.out.println("Type 1 if you want to test the output?");
-        String UserResponde = AskingUser.nextLine();
-        if(UserResponde.equals("1")) {
-            System.out.println("name = " + IndexTest.get(0));
-            System.out.println("Address = " + IndexTest.get(1));
-            System.out.println("Phone Number = " + IndexTest.get(2));
-            System.out.println(AllEntries);
-        }
-        System.out.println(entries);
-
-
+        System.out.println("Which entry would you like to view?");
+        System.out.println("0 = first entry");
+        System.out.println("1 = second entry");
+        System.out.println("etc...");
+        String UserResponse = AskingUser.nextLine();
+            int userIndexNum = 0;
+            try {
+                userIndexNum = Integer.parseInt(UserResponse);
+            } catch (NumberFormatException ex) {
+                System.out.println("Sorry, no integer detected");
+            }
+            if (userIndexNum < AllEntries.size()/3) {
+                userIndexNum = userIndexNum * 3;
+                System.out.println("Name = " + AllEntries.get(userIndexNum + 0));
+                System.out.println("Address = " + AllEntries.get(userIndexNum + 1));
+                System.out.println("Phone Number = " + AllEntries.get(userIndexNum + 2));
+            }
+            else{
+                System.out.println("sorry, not enough index's for valid output");
+            }
     }
 }
